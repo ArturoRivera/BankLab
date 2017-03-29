@@ -10,6 +10,7 @@ class Bank
 private:
 	std::string _name;
 	std::vector<Account> _accounts;
+
 public:
 	Bank(std::string name);
 	~Bank();
@@ -21,5 +22,6 @@ public:
 	
 	void Deposit(int accountNumber, int amount);
 	void Withdraw(int accountNumber, int amount);
+	std::string GetTransactionLog(int accountNumber);
 };
 

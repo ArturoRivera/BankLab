@@ -10,6 +10,7 @@ void DisplayMenu();
 void TransactMenu();
 void AddAccountMenu();
 void DisplayAccountsMenu();
+void DisplayTransactionLog();
 
 int main()
 {
@@ -30,6 +31,7 @@ void DisplayMenu()
 		cout << "1) Create Account" << endl;
 		cout << "2) Deposit or Withdraw" << endl;
 		cout << "3) Display Accounts" << endl;
+		cout << "4) Display Transaction Log" << endl;
 		cout << "What would you like to do?" << endl;
 		cin >> choice;
 
@@ -38,6 +40,7 @@ void DisplayMenu()
 		case 1: AddAccountMenu(); break;
 		case 2: TransactMenu(); break;
 		case 3: DisplayAccountsMenu();
+		case 4: DisplayTransactionLog();
 		default: break;
 		}
 	} while (choice != 10);
@@ -78,21 +81,28 @@ void TransactMenu()
 	system("cls");
 	cout << "1) Deposit" << endl;
 	cout << "2) Withdraw" << endl;
-	
+
+
 	int transactionType;
 	cin >> transactionType;
 
-	//Get the amount
-	system("cls");
-	cout << "How many pennies?";
-	int pennies;
-	cin >> pennies;
+	
 
 	switch (transactionType)
 	{
-	case 1: bank.Deposit(chosenAccount, pennies); break;
-	case 2: bank.Withdraw(chosenAccount, pennies); break;
+	case 1: system("cls");
+		cout << "How many pennies?";
+		int pennies;
+		cin >> pennies;
+		bank.Deposit(chosenAccount, pennies); break;
+
+	case 2: system("cls");
+		cout << "How many pennies?";
+		cin >> pennies;
+		bank.Withdraw(chosenAccount, pennies); break;
+
 	default: break;
+	
 	}
 
 
@@ -103,4 +113,18 @@ void DisplayAccountsMenu()
 	system("cls");
 	cout << bank.ListAccounts();
 	system("pause");
+}
+
+void DisplayTransactionLog()
+{
+	system("cls");
+	cout << "Which account do you want to display a transaction log for?" << endl;
+	cout << bank.ListAccounts();
+	int choice;
+	cin >> choice;
+
+	system("cls");
+	cout << bank.GetTransactionLog(choice) << endl;
+	system("pause");
+
 }

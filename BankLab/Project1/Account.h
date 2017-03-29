@@ -19,5 +19,8 @@ public:
 	void Withdraw(int numberOfPennies);
 	int getBalance();
 	int getAccountNumber();
+	std::string getCustomerName();
+
+	std::string showLog();
 };
 
